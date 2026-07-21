@@ -1,1 +1,6 @@
 __pycache__/
+*.pyc
+*.pyo
+Thumbs.db
+desktop.ini
+.vscode/

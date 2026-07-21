@@ -1,11 +1,10 @@
 from paquete_imprimir.modulo_imprimir_menu import *
+from utils import *
+
 flag = True
 while flag:
     imprimir_menu()
-    opc = input()
-    try:
-        opc = int(opc)
-    except ValueError:
+    opc = validar_entero()
         
     match opc:
         case 0:
