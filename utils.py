@@ -30,3 +30,14 @@ def validar_string():
         else:
             return validar_respuesta_vacia
             
+def error_match_case():
+    print("ERROR: Opcion no valida, seleccione una de las opciones aceptables")
+
+def definir_rango_valido_numero_entero(min, max):
+    flag = True
+    while flag:
+        numero_entero = validar_entero()
+        if min <= numero_entero <= max:
+            return numero_entero
+        else:
+            print("El numero ingresado no esta entre el rango de valores permitidos, ingrese uno valido")
