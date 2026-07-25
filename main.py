@@ -6,7 +6,7 @@ inventario = []
 flag = True
 while flag:
     imprimir_menu()
-    opc = validar_entero()
+    opc = definir_rango_valido_numero_entero(0, 4)
         
     match opc:
         case 0:

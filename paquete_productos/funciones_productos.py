@@ -6,17 +6,26 @@ def registrar_producto(inventario):
     flag = True
     while True:
         imprimir_continuar_registro()
-        opc = validar_entero()
+        opc = definir_rango_valido_numero_entero(0, 1)
         match opc:
             case 0:
                 break
             case 1:
-                print("Cuantos productos quiere registrar?: ")
-                cantidad_productos = validar_entero()
+                flag = True
+                while flag:    
+                    print("Cuantos productos quiere registrar?: ")
+                    cantidad_productos = validar_entero()
+                    if cantidad_productos <= 0:
+                        print("Ingrese un numero mayor a 0")
+                    else:
+                        break
                 for i in range(cantidad_productos):
                     imprimir_tipos_de_producto()
-                    opc_categoria = validar_entero()
+                    opc_categoria = definir_rango_valido_numero_entero(0, 3)
                     match opc_categoria:
+                        case 0:
+                            cancelando()
+                            return inventario
                         case 1:
                             categoria, nombre, numero_paquetes, unidades = registro_general_de_producto()
                             inventario = guardar_producto_general(categoria, nombre, numero_paquetes, unidades, inventario)
@@ -28,9 +37,6 @@ def registrar_producto(inventario):
                             categoria, nombre, numero_paquetes, unidades = registro_general_de_producto()
                             liquido = registrar_producto_liquido()
                             inventario = guardar_producto_liquido(categoria, nombre, numero_paquetes, unidades, liquido, inventario)
-                        case 0:
-                            cancelando()
-                            return inventario
                         case _:
                             error_match_case()
             case _:
@@ -38,29 +44,46 @@ def registrar_producto(inventario):
 
 def registro_general_de_producto():
     imprimir_categorias_de_productos()
-    categoria_producto = validar_entero()
+    categoria_producto = definir_rango_valido_numero_entero(1, 8)
     imprime_pregunta_del_nombre()
     nombre_producto = validar_string()
     imprime_pregunta_si_compro_paquetes()
-    pregunta_paquetes = validar_entero()
+    pregunta_paquetes = definir_rango_valido_numero_entero(1, 2)
     match pregunta_paquetes:
         case 1:
-            imprime_pregunta_de_paquetes()
-            numero_paquetes = validar_entero()
-            imprime_pregunta_de_unidades_por_paquete()
-            unidades_por_paquete = validar_entero()
+            flag = True
+            while flag:
+                imprime_pregunta_de_paquetes()
+                numero_paquetes = validar_entero()
+                if numero_paquetes <= 0:
+                    print("Ingrese un numero mayor a 0")
+                else:
+                    break
+            while flag:
+                imprime_pregunta_de_unidades_por_paquete()
+                unidades_por_paquete = validar_entero()
+                if unidades_por_paquete <= 0:
+                    print("Ingrese un numero mayor a 0")
+                else:
+                    break
             return categoria_producto, nombre_producto, numero_paquetes, unidades_por_paquete
         case 2:
             numero_paquetes = 1
-            imprime_pregunta_numero_de_unidades_solas()
-            unidades = validar_entero()
+            flag = True
+            while flag:
+                imprime_pregunta_numero_de_unidades_solas()
+                unidades = validar_entero()
+                if unidades <= 0:
+                    print("Ingrese un numero mayor a 0")
+                else:
+                    break
             return categoria_producto, nombre_producto, numero_paquetes, unidades
         case _:
             error_match_case() 
 
 def registrar_producto_a_granel():
     imprime_pregunta_cantidad_si_en_gr_o_kg()
-    opc = validar_entero()
+    opc = definir_rango_valido_numero_entero(1, 2)
     match opc:
         case 1:
             imprime_pregunta_cantidad_gr()
@@ -76,7 +99,7 @@ def registrar_producto_a_granel():
 
 def registrar_producto_liquido():
     imprime_pregunta_si_ml_o_L()
-    opc = validar_entero()
+    opc = definir_rango_valido_numero_entero(1, 2)
     match opc:
         case 1:
             imprime_pregunta_cantidad_ml()
