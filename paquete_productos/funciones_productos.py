@@ -2,14 +2,14 @@ from paquete_productos.clases_de_productos import *
 from utils import *
 from paquete_productos.funciones_imprimir_menus import *
 
-def registrar_producto(inventario):
+def registrar_producto(inventario: list):
     flag = True
     while True:
         imprimir_continuar_registro()
         opc = definir_rango_valido_numero_entero(0, 1)
         match opc:
             case 0:
-                break
+                return inventario
             case 1:
                 flag = True
                 while flag:    
@@ -133,3 +133,8 @@ def guardar_producto_liquido(categoria, nombre, numero_paquetes, unidades, liqui
     inventario.append(nuevo_producto)
     confirmacion_producto_registrado()
     return inventario
+
+def mostrar_productos(inventario):
+    for producto in inventario:
+        producto.mostrar_producto()
+        
