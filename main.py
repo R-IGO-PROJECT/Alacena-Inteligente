@@ -1,6 +1,6 @@
 from paquete_imprimir.modulo_imprimir_menu import *
 from utils import *
-from paquete_productos.funciones_productos import registrar_producto, mostrar_productos
+from paquete_productos.funciones_productos import registrar_producto, mostrar_productos, borrar_producto
 
 inventario = []
 flag = True
@@ -17,7 +17,7 @@ while flag:
         case 2:
             pass
         case 3:
-            pass
+            inventario = borrar_producto(inventario)
         case 4:
             mostrar_productos(inventario)
         case _:
