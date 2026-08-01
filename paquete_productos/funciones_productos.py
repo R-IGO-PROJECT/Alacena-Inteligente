@@ -3,7 +3,6 @@ from utils import *
 from paquete_productos.funciones_imprimir_menus import *
 
 def registrar_producto(inventario: list):
-    flag = True
     while True:
         imprimir_continuar_registro()
         opc = definir_rango_valido_numero_entero(0, 1)
@@ -11,8 +10,7 @@ def registrar_producto(inventario: list):
             case 0:
                 return inventario
             case 1:
-                flag = True
-                while flag:    
+                while True:    
                     print("Cuantos productos quiere registrar?: ")
                     cantidad_productos = validar_entero()
                     if cantidad_productos <= 0:
@@ -51,15 +49,14 @@ def registro_general_de_producto():
     pregunta_paquetes = definir_rango_valido_numero_entero(1, 2)
     match pregunta_paquetes:
         case 1:
-            flag = True
-            while flag:
+            while True:
                 imprime_pregunta_de_paquetes()
                 numero_paquetes = validar_entero()
                 if numero_paquetes <= 0:
                     print("Ingrese un numero mayor a 0")
                 else:
                     break
-            while flag:
+            while True:
                 imprime_pregunta_de_unidades_por_paquete()
                 unidades_por_paquete = validar_entero()
                 if unidades_por_paquete <= 0:
@@ -69,8 +66,7 @@ def registro_general_de_producto():
             return categoria_producto, nombre_producto, numero_paquetes, unidades_por_paquete
         case 2:
             numero_paquetes = 1
-            flag = True
-            while flag:
+            while True:
                 imprime_pregunta_numero_de_unidades_solas()
                 unidades = validar_entero()
                 if unidades <= 0:

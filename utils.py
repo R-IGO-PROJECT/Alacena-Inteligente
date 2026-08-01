@@ -1,6 +1,5 @@
 def validar_entero():
-    flag = True
-    while flag:
+    while True:
         numero = input("Ingrese un numero entero: ")
         try:
             numero_entero = int(numero)
@@ -10,8 +9,7 @@ def validar_entero():
     return numero_entero
 
 def validar_decimal():
-    flag = True
-    while flag:
+    while True:
         numero = input("Ingrese un numero entero: ")
         try:
             numero_decimal = float(numero)
@@ -21,8 +19,7 @@ def validar_decimal():
     return numero_decimal
 
 def validar_string():
-    flag = True
-    while flag:
+    while True:
         respuesta_string = input("Ingrese su respuesta: ")
         validar_respuesta_vacia = respuesta_string.strip()
         if validar_respuesta_vacia == "":
@@ -34,8 +31,7 @@ def error_match_case():
     print("ERROR: Opcion no valida, seleccione una de las opciones aceptables")
 
 def definir_rango_valido_numero_entero(min, max):
-    flag = True
-    while flag:
+    while True:
         numero_entero = validar_entero()
         if min <= numero_entero <= max:
             return numero_entero

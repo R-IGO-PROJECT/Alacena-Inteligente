@@ -3,8 +3,7 @@ from utils import *
 from paquete_productos.funciones_productos import registrar_producto, mostrar_productos, borrar_producto
 
 inventario = []
-flag = True
-while flag:
+while True:
     imprimir_menu()
     opc = definir_rango_valido_numero_entero(0, 4)
         
